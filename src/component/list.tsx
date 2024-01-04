@@ -1,38 +1,30 @@
 import "./list.css"
-import {useState, FormEvent} from "react"
+import { useSelector } from 'react-redux';
+
+export interface UpdateItemList {
+    title: string;
+    description: string;
+    image: File | null;
+  }
 
 function List() {
-    const [update, setUpdate] = useState("")
-    const [updates, setUpdates] = useState<string[]>([])
+  const updates = useSelector((state: any) => state.updates);
 
-    // input 데이터 확인, e의 타입을 지정해줌
-    const updateList = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setUpdate(e.target.value)
-    }
-    // input 데이터 제출하기, e의 type을 지정해줌
-    const dataSubmit = (e: FormEvent<HTMLFormElement>) =>{
-        e.preventDefault()
-        if(update === ""){ //공백 등록 x
-            return
-        }
-        setUpdates((newArray)=>[update, ...newArray])
-        setUpdate("")
-    }
-
-    return(
-        <section>
-            <div>
-                <form onSubmit={dataSubmit}>
-                    <input type="text" placeholder="메모를 해볼까?" onChange={updateList} />
-                    <button>등록</button>
-                </form>
-            </div>
-            <div>
-                {updates.map((list, i)=>(
-                <p key={i}>{list}</p>))}
-            </div>
-        </section>
-    )
+  return (
+    <section className="w1200">
+      <article className="listWrap">
+        {updates.map((item: UpdateItemList, i: number) => (
+          <div key={i}>
+            {item.image && (
+              <img className='listImg' src={URL.createObjectURL(item.image)} alt={`Preview of ${item.title}`}/>
+            )}
+            <p>이름 {item.title}</p>
+            <p>설명 {item.description}</p>
+          </div>
+        ))}
+      </article>
+    </section>
+  );
 }
 
-export default List ; 
+export default List;

@@ -1,0 +1,13 @@
+.listWrap{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+.listWrap>div{
+    width: 20%;
+    margin-bottom: 10px;
+}
+.listImg{
+    width: 90%;
+    max-height: 80%;
+}

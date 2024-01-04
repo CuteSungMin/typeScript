@@ -1,10 +1,14 @@
 import "./header.css"
+import { Link } from "react-router-dom";
+import Logo from "../img/solid_bold_LOGO.png"
+
 
 function Header() {
     return(
-        <header>
+        <header className="w1200 headerWrap">
             <div>
-                <h1>메모장</h1>
+                <img className="Logo" src={Logo} alt="로고"></img>
+                <Link to="/Write"><p>UPDATE</p></Link>
             </div>
         </header>
     )

@@ -4,4 +4,9 @@
     box-sizing: border-box;
     text-decoration: none;
     border: none;
+    color: #090909;
+}
+.w1200{
+    width: 1200px;
+    margin: 0 auto;
 }

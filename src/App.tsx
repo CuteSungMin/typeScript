@@ -1,14 +1,19 @@
 import './App.css';
-import Header from "./component/header"
-import List from "./component/list"
-
+import { Routes, Route } from 'react-router-dom'
+import Main from './component/main';
+import Write from './component/write';
 
 function App() {
   return (
+
     <div className="App">
-      <Header/>
-      <List/>
+      <Routes>
+        <Route path='/*' element={<Main />}/>
+        <Route path='/write' element={<Write/>}/>
+      </Routes>
     </div>
+
+
   );
 }
 
